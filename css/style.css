@@ -224,7 +224,7 @@ article.entry {
   padding: 56px 0;
   border-top: 1px solid var(--line-soft);
 }
-article.entry:last-of-type { border-bottom: 1px solid var(--line-soft); }
+article.entry.is-last-visible { border-bottom: 1px solid var(--line-soft); }
 .entry-meta {
   display: flex;
   align-items: baseline;
@@ -381,4 +381,33 @@ footer .copyright {
 .entry-body .work-note {
   font-size: 13px;
   color: var(--ink-soft);
+}
+
+/* ---- ページャー ---- */
+.pager {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px 20px;
+  margin-top: 64px;
+  padding-top: 40px;
+  border-top: 1px solid var(--line-soft);
+}
+.pager button {
+  background: none;
+  border: none;
+  font-family: inherit;
+  font-size: 13px;
+  letter-spacing: 0.1em;
+  color: var(--ink-soft);
+  cursor: pointer;
+  padding: 4px 2px;
+  border-bottom: 1px solid transparent;
+  transition: color 0.4s, border-color 0.4s;
+}
+.pager button:hover { color: var(--moss); }
+.pager button[aria-current="page"] {
+  color: var(--ink);
+  border-bottom-color: var(--moss);
 }

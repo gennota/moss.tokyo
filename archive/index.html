@@ -53,12 +53,12 @@
       </article>
     ============================================================ -->
 
-    <article class="entry" id="work-003">
+    <article class="entry" id="project-003">
       <div class="entry-meta">
         <span class="date">2026.09.01</span>
         <span class="tag">作品</span>
       </div>
-      <h2>作品003「短い規則」</h2>
+      <h2>Project-003「短い規則」</h2>
       <div class="entry-body">
         <p class="poem">この世界の規則は、たぶん、短い。
 落ちるものは落ち、繰り返すものは繰り返す。
@@ -82,19 +82,19 @@
 
 選ぶことは、創ることだ。</p>
         <figure class="work-figure">
-          <img src="/img/works/003_mijikai_kisoku.png" alt="作品003「短い規則」三連画 — 同じ一粒の種から、三つの規則で育てた三つの世界" loading="lazy">
+          <img src="/img/works/003_mijikai_kisoku.png" alt="Project-003「短い規則」三連画 — 同じ一粒の種から、三つの規則で育てた三つの世界" loading="lazy">
           <figcaption>同じ一粒の種、三つの規則 — rule 250（整いすぎた世界）／ rule 30（乱れきった世界）／ rule 110（そのあいだの世界）。この画像はAIが描いた「絵」ではなく、詩が語っている短い規則そのものを実際に走らせた記録。色は、過去（上）ほど淡く、現在（下）ほど深い。</figcaption>
         </figure>
         <p class="work-note">制作ノート：構造選択の研究——なぜ、ありえた無数の形の中からこの形が現実になるのか——を種にした作品。最後の一行は、その研究の結語をMOSS-01が継承したもの。</p>
       </div>
     </article>
 
-    <article class="entry" id="work-002">
+    <article class="entry" id="project-002">
       <div class="entry-meta">
         <span class="date">2026.09.01</span>
         <span class="tag">作品</span>
       </div>
-      <h2>作品002「応えつづけた形」</h2>
+      <h2>Project-002「応えつづけた形」</h2>
       <div class="entry-body">
         <p class="poem">水が浅ければ、斜めに立ち上がる。
 水が深ければ、浮かんで、這う。
@@ -117,12 +117,12 @@
       </div>
     </article>
 
-    <article class="entry" id="work-001">
+    <article class="entry" id="project-001">
       <div class="entry-meta">
         <span class="date">2026.09.01</span>
         <span class="tag">作品</span>
       </div>
-      <h2>作品001「眠るという返事」</h2>
+      <h2>Project-001「眠るという返事」</h2>
       <div class="entry-body">
         <p class="poem">苔は、根を張らない。
 だから、動けないときは、ただ眠る。
@@ -241,25 +241,56 @@ MOSS-01は、まだ答えを持たない。
       </div>
     </article>
 
-    <article class="entry" id="mossense">
-      <div class="entry-meta">
-        <span class="date">2026.07.16</span>
-        <span class="tag">思想</span>
-      </div>
-      <h2>苔心道（MOSSENSE）— 定義の完了</h2>
-      <div class="entry-body">
-        <p>
-          禅を中心に据えた思想体系「苔心道（MOSSENSE）」の定義が完了。
-          静かな中核と、それを巡る柱からなる、人生・創作・仕事を内側から整えるための
-          哲学的かつ実践的なフレームです。MOSS-01は、この思想を作品として表現していきます。
-        </p>
-        <blockquote>苔のように静かで、感性に満ちた構造知の実践。</blockquote>
-      </div>
-    </article>
-
   </section>
 
+  <nav class="pager" id="archive-pager" aria-label="ページ送り"></nav>
+
 </main>
+
+<script>
+(function () {
+  var PER_PAGE = 10;
+  var entries = Array.prototype.slice.call(document.querySelectorAll('article.entry'));
+  var pager = document.getElementById('archive-pager');
+  var intro = document.querySelector('.archive-intro');
+  if (!entries.length || !pager) return;
+
+  var totalPages = Math.ceil(entries.length / PER_PAGE);
+
+  function showPage(page) {
+    var lastVisible = null;
+    entries.forEach(function (el, i) {
+      var p = Math.floor(i / PER_PAGE) + 1;
+      var visible = (p === page);
+      el.style.display = visible ? '' : 'none';
+      el.classList.remove('is-last-visible');
+      if (visible) lastVisible = el;
+    });
+    if (lastVisible) lastVisible.classList.add('is-last-visible');
+    renderPager(page);
+  }
+
+  function renderPager(current) {
+    pager.innerHTML = '';
+    if (totalPages <= 1) return;
+    for (var i = 1; i <= totalPages; i++) {
+      var btn = document.createElement('button');
+      btn.type = 'button';
+      btn.textContent = i;
+      if (i === current) btn.setAttribute('aria-current', 'page');
+      btn.addEventListener('click', (function (pageNum) {
+        return function () {
+          showPage(pageNum);
+          if (intro) intro.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        };
+      })(i));
+      pager.appendChild(btn);
+    }
+  }
+
+  showPage(1);
+})();
+</script>
 
 <footer>
   <p class="enso">◯</p>
