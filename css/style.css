@@ -1,0 +1,364 @@
+/* ============================================================
+   MOSS_PJ — moss.tokyo
+   質感: 和紙・墨・苔・土 / 気配・余白・所作・静けさ・簡素
+   ============================================================ */
+
+:root {
+  --paper: #f4f1e8;        /* 和紙・生成り */
+  --paper-deep: #ece8db;   /* 土間の陰 */
+  --ink: #2b2b26;          /* 墨 */
+  --ink-soft: #55554c;     /* 薄墨 */
+  --moss: #4d5f45;         /* 苔 */
+  --moss-soft: #78876c;    /* 苔の若芽 */
+  --earth: #8a7a63;        /* 土 */
+  --line: rgba(43, 43, 38, 0.18);
+  --line-soft: rgba(43, 43, 38, 0.09);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #191a16;      /* 夜の土間 */
+    --paper-deep: #14150f;
+    --ink: #d9d6c8;
+    --ink-soft: #9a9788;
+    --moss: #8fa37f;
+    --moss-soft: #6d7d61;
+    --earth: #a3927a;
+    --line: rgba(217, 214, 200, 0.22);
+    --line-soft: rgba(217, 214, 200, 0.10);
+  }
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "Shippori Mincho", "Hiragino Mincho ProN", "Yu Mincho", serif;
+  font-weight: 400;
+  line-height: 2.1;
+  letter-spacing: 0.06em;
+  font-feature-settings: "palt";
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: inherit; text-decoration: none; }
+
+/* ---- 骨格 ---- */
+.wrap {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 28px;
+}
+
+/* ---- ヘッダー ---- */
+header {
+  padding: 44px 0 0;
+}
+.header-inner {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px 24px;
+}
+.site-mark {
+  font-size: 15px;
+  letter-spacing: 0.32em;
+  color: var(--ink);
+}
+.site-mark small {
+  display: block;
+  font-size: 10px;
+  letter-spacing: 0.28em;
+  color: var(--ink-soft);
+  margin-top: 2px;
+}
+nav.global {
+  display: flex;
+  gap: 28px;
+  font-size: 12px;
+  letter-spacing: 0.26em;
+}
+nav.global a {
+  color: var(--ink-soft);
+  padding-bottom: 3px;
+  border-bottom: 1px solid transparent;
+  transition: color 0.4s, border-color 0.4s;
+}
+nav.global a:hover { color: var(--moss); }
+nav.global a[aria-current="page"] {
+  color: var(--ink);
+  border-bottom-color: var(--moss);
+}
+
+/* ---- ヒーロー ---- */
+.hero {
+  padding: 120px 0 100px;
+}
+.hero .en-kicker {
+  font-size: 11px;
+  letter-spacing: 0.44em;
+  color: var(--moss);
+  margin-bottom: 40px;
+}
+.hero h1 {
+  font-size: clamp(26px, 5.4vw, 40px);
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  line-height: 1.9;
+}
+.hero .lede {
+  margin-top: 44px;
+  max-width: 34em;
+  font-size: 14px;
+  color: var(--ink-soft);
+}
+
+/* ---- 区切り（間） ---- */
+.ma {
+  display: block;
+  width: 1px;
+  height: 72px;
+  margin: 0 auto;
+  background: var(--line);
+  border: 0;
+}
+
+/* ---- セクション ---- */
+section.block { padding: 88px 0; }
+section.block + section.block { border-top: 1px solid var(--line-soft); }
+
+.sec-label {
+  font-size: 11px;
+  letter-spacing: 0.4em;
+  color: var(--moss);
+  margin-bottom: 14px;
+}
+.sec-title {
+  font-size: 21px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  margin-bottom: 40px;
+}
+.block p.body {
+  font-size: 14.5px;
+  max-width: 36em;
+  color: var(--ink);
+}
+.block p.body + p.body { margin-top: 1.6em; }
+.note {
+  font-size: 12.5px;
+  color: var(--ink-soft);
+}
+
+/* ---- MOSSの核 ---- */
+.core-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: var(--line-soft);
+  border-top: 1px solid var(--line-soft);
+  border-bottom: 1px solid var(--line-soft);
+}
+.core-cell {
+  background: var(--paper);
+  padding: 40px 28px 44px;
+}
+.core-cell .letter {
+  font-size: 30px;
+  color: var(--moss);
+  font-weight: 500;
+  line-height: 1;
+}
+.core-cell .name {
+  margin-top: 14px;
+  font-size: 14px;
+  letter-spacing: 0.18em;
+}
+.core-cell .name span {
+  color: var(--ink-soft);
+  font-size: 12px;
+  margin-left: 8px;
+}
+.core-cell .desc {
+  margin-top: 14px;
+  font-size: 13px;
+  line-height: 2.0;
+  color: var(--ink-soft);
+}
+
+/* ---- 創作サイクル ---- */
+.cycle {
+  list-style: none;
+  border-top: 1px solid var(--line-soft);
+}
+.cycle li {
+  display: flex;
+  gap: 26px;
+  padding: 22px 4px;
+  border-bottom: 1px solid var(--line-soft);
+  align-items: baseline;
+}
+.cycle .step-en {
+  flex: 0 0 9.5em;
+  font-size: 11px;
+  letter-spacing: 0.24em;
+  color: var(--moss);
+}
+.cycle .step-ja {
+  font-size: 13.5px;
+  color: var(--ink-soft);
+}
+
+/* ---- アーカイブ ---- */
+.archive-intro {
+  font-size: 14px;
+  color: var(--ink-soft);
+  max-width: 34em;
+  margin-bottom: 72px;
+}
+article.entry {
+  padding: 56px 0;
+  border-top: 1px solid var(--line-soft);
+}
+article.entry:last-of-type { border-bottom: 1px solid var(--line-soft); }
+.entry-meta {
+  display: flex;
+  align-items: baseline;
+  gap: 18px;
+  font-size: 11.5px;
+  letter-spacing: 0.2em;
+  color: var(--ink-soft);
+}
+.entry-meta .tag {
+  color: var(--moss);
+  border: 1px solid var(--line);
+  padding: 1px 10px;
+  letter-spacing: 0.24em;
+}
+.entry h2 {
+  margin-top: 18px;
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  line-height: 1.9;
+}
+.entry .entry-body {
+  margin-top: 20px;
+  font-size: 14px;
+  color: var(--ink);
+  max-width: 36em;
+}
+.entry .entry-body p + p { margin-top: 1.4em; }
+.entry blockquote {
+  margin: 28px 0 0;
+  padding-left: 22px;
+  border-left: 1px solid var(--moss-soft);
+  color: var(--ink-soft);
+  font-size: 14px;
+}
+
+/* ---- プロフィール ---- */
+.profile-table {
+  width: 100%;
+  border-collapse: collapse;
+  border-top: 1px solid var(--line-soft);
+}
+.profile-table th, .profile-table td {
+  padding: 18px 6px;
+  border-bottom: 1px solid var(--line-soft);
+  font-size: 14px;
+  text-align: left;
+  vertical-align: top;
+  font-weight: 400;
+  line-height: 2.0;
+}
+.profile-table th {
+  width: 8em;
+  color: var(--ink-soft);
+  letter-spacing: 0.2em;
+  font-size: 12.5px;
+  white-space: nowrap;
+}
+.statement {
+  border: 1px solid var(--line-soft);
+  padding: 44px 36px;
+  font-size: 14.5px;
+  line-height: 2.4;
+  max-width: 34em;
+}
+.statement .sig {
+  margin-top: 28px;
+  font-size: 11px;
+  letter-spacing: 0.3em;
+  color: var(--ink-soft);
+}
+.principles {
+  list-style: none;
+  border-top: 1px solid var(--line-soft);
+}
+.principles li {
+  padding: 16px 4px;
+  border-bottom: 1px solid var(--line-soft);
+  font-size: 13.5px;
+  color: var(--ink);
+}
+.principles li::before {
+  content: "─";
+  color: var(--moss-soft);
+  margin-right: 14px;
+}
+
+/* ---- リンク ---- */
+.links-list {
+  list-style: none;
+  border-top: 1px solid var(--line-soft);
+}
+.links-list li { border-bottom: 1px solid var(--line-soft); }
+.links-list a, .links-list .pending {
+  display: flex;
+  align-items: baseline;
+  gap: 20px;
+  padding: 22px 4px;
+  transition: color 0.4s;
+}
+.links-list a:hover { color: var(--moss); }
+.links-list .svc {
+  flex: 0 0 8em;
+  font-size: 12px;
+  letter-spacing: 0.24em;
+  color: var(--moss);
+}
+.links-list .handle { font-size: 14px; }
+.links-list .pending { color: var(--ink-soft); }
+.links-list .pending .svc { color: var(--ink-soft); }
+
+/* ---- フッター ---- */
+footer {
+  padding: 110px 0 64px;
+  text-align: center;
+}
+footer .enso {
+  font-size: 20px;
+  color: var(--moss-soft);
+  line-height: 1;
+}
+footer .copyright {
+  margin-top: 26px;
+  font-size: 10.5px;
+  letter-spacing: 0.3em;
+  color: var(--ink-soft);
+}
+
+/* ---- レスポンシブ ---- */
+@media (max-width: 560px) {
+  .hero { padding: 84px 0 72px; }
+  section.block { padding: 64px 0; }
+  .core-grid { grid-template-columns: 1fr; }
+  .cycle li { flex-direction: column; gap: 4px; }
+  .statement { padding: 32px 22px; }
+  nav.global { gap: 18px; }
+}
