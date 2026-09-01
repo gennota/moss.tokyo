@@ -96,7 +96,8 @@ nav.global a[aria-current="page"] {
 
 /* ---- ヒーロー ---- */
 .hero {
-  padding: 120px 0 100px;
+  padding-top: 120px;
+  padding-bottom: 100px;
 }
 .hero .en-kicker {
   font-size: 11px;
@@ -128,7 +129,7 @@ nav.global a[aria-current="page"] {
 }
 
 /* ---- セクション ---- */
-section.block { padding: 88px 0; }
+section.block { padding-top: 88px; padding-bottom: 88px; }
 section.block + section.block { border-top: 1px solid var(--line-soft); }
 
 .sec-label {
@@ -356,8 +357,8 @@ footer .copyright {
 /* ---- レスポンシブ ---- */
 @media (max-width: 560px) {
   .wrap { padding: 0 36px; }
-  .hero { padding: 84px 0 72px; }
-  section.block { padding: 64px 0; }
+  .hero { padding-top: 84px; padding-bottom: 72px; }
+  section.block { padding-top: 64px; padding-bottom: 64px; }
   .core-grid { grid-template-columns: 1fr; }
   .cycle li { flex-direction: column; gap: 4px; }
   .statement { padding: 32px 22px; }
