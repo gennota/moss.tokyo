@@ -356,7 +356,7 @@ footer .copyright {
 
 /* ---- レスポンシブ ---- */
 @media (max-width: 560px) {
-  .wrap { padding: 15px 36px 0; }
+  .wrap { padding: 15px 30px 0; }
   .hero { padding-top: 84px; padding-bottom: 72px; }
   section.block { padding-top: 64px; padding-bottom: 64px; }
   .core-grid { grid-template-columns: 1fr; }
