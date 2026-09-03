@@ -46,6 +46,18 @@ body {
 
 a { color: inherit; text-decoration: none; }
 
+/* 出典・外部リンク（下線＋矢印アイコン） */
+.ext-link {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: var(--moss-soft);
+}
+.ext-link::after {
+  content: " ↗";
+  font-size: 0.85em;
+  color: var(--moss);
+}
+
 /* ---- 骨格 ---- */
 .wrap {
   max-width: 720px;
