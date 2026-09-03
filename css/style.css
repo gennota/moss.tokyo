@@ -234,6 +234,11 @@ article.entry.is-last-visible { border-bottom: 1px solid var(--line-soft); }
   letter-spacing: 0.2em;
   color: var(--ink-soft);
 }
+.entry-meta .date {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--ink);
+}
 .entry-meta .tag {
   color: var(--moss);
   border: 1px solid var(--line);
