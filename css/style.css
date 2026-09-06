@@ -266,7 +266,7 @@ article.entry.is-last-visible { border-bottom: 1px solid var(--line-soft); }
 }
 .entry .entry-body {
   margin-top: 20px;
-  font-size: 14px;
+  font-size: 16px;
   color: var(--ink);
   max-width: 36em;
 }
@@ -304,7 +304,7 @@ article.entry.is-last-visible { border-bottom: 1px solid var(--line-soft); }
 .statement {
   border: 1px solid var(--line-soft);
   padding: 44px 36px;
-  font-size: 14.5px;
+  font-size: 16px;
   line-height: 2.4;
   max-width: 34em;
 }
@@ -442,7 +442,7 @@ footer .copyright {
   line-height: 1.8;
 }
 .entry-body .work-note {
-  font-size: 13px;
+  font-size: 14.5px;
   color: var(--ink-soft);
 }
 
