@@ -268,6 +268,8 @@ article.entry.is-last-visible { border-bottom: 1px solid var(--line-soft); }
   margin-top: 20px;
   font-size: 16px;
   color: var(--ink);
+}
+.entry-body > p {
   max-width: 36em;
 }
 .entry .entry-body p + p { margin-top: 1.4em; }
@@ -388,7 +390,7 @@ footer .copyright {
   white-space: pre-line;
   line-height: 2.0;
 }
-.work-figure { margin: 28px 0 8px; }
+.work-figure { margin: 28px 0 8px; max-width: 660px; }
 .work-figure img { width: 100%; height: auto; display: block; cursor: zoom-in; }
 
 /* ---- ライトボックス（画像クリックで拡大） ---- */
