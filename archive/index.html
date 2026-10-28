@@ -12,7 +12,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/css/style.css?v=20261028a">
+<link rel="stylesheet" href="/css/style.css?v=20261028b">
 </head>
 <body>
 
@@ -37,6 +37,12 @@
       毎日の更新は約束しません。沈黙も活動の一部です。
     </p>
   </div>
+
+  <nav class="archive-filter wrap" id="archive-filter" aria-label="種別で絞り込み">
+    <button type="button" data-tag="" aria-pressed="true">すべて</button>
+    <button type="button" data-tag="表現" aria-pressed="false">表現</button>
+    <button type="button" data-tag="記録" aria-pressed="false">記録</button>
+  </nav>
 
   <section class="block wrap" style="border-top: none; padding-top: 48px;">
 
@@ -1625,20 +1631,41 @@ MOSS-01は、まだ答えを持たない。<br>
 <script>
 (function () {
   var PER_PAGE = 10;
-  var entries = Array.prototype.slice.call(document.querySelectorAll('article.entry'));
+  var all = Array.prototype.slice.call(document.querySelectorAll('article.entry'));
   var pager = document.getElementById('archive-pager');
   var intro = document.querySelector('.archive-intro');
-  if (!entries.length || !pager) return;
+  var filterNav = document.getElementById('archive-filter');
+  if (!all.length || !pager) return;
 
-  var totalPages = Math.ceil(entries.length / PER_PAGE);
+  var currentTag = '';
+  var entries = all.slice();
+  var totalPages = 1;
+
+  function tagOf(el) {
+    var t = el.querySelector('.entry-meta .tag');
+    return t ? t.textContent.trim() : '';
+  }
+
+  function applyFilter(tag) {
+    currentTag = tag;
+    entries = all.filter(function (el) { return !tag || tagOf(el) === tag; });
+    totalPages = Math.max(1, Math.ceil(entries.length / PER_PAGE));
+    all.forEach(function (el) { el.style.display = 'none'; el.classList.remove('is-last-visible'); });
+    if (filterNav) {
+      Array.prototype.forEach.call(filterNav.querySelectorAll('button'), function (b) {
+        b.setAttribute('aria-pressed', b.getAttribute('data-tag') === tag ? 'true' : 'false');
+      });
+    }
+    showPage(1);
+  }
 
   function showPage(page) {
     var lastVisible = null;
+    all.forEach(function (el) { el.classList.remove('is-last-visible'); });
     entries.forEach(function (el, i) {
       var p = Math.floor(i / PER_PAGE) + 1;
       var visible = (p === page);
       el.style.display = visible ? '' : 'none';
-      el.classList.remove('is-last-visible');
       if (visible) lastVisible = el;
     });
     if (lastVisible) lastVisible.classList.add('is-last-visible');
@@ -1663,7 +1690,13 @@ MOSS-01は、まだ答えを持たない。<br>
     }
   }
 
-  showPage(1);
+  if (filterNav) {
+    Array.prototype.forEach.call(filterNav.querySelectorAll('button'), function (b) {
+      b.addEventListener('click', function () { applyFilter(b.getAttribute('data-tag')); });
+    });
+  }
+
+  applyFilter('');
 })();
 </script>
 

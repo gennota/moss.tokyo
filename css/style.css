@@ -510,3 +510,28 @@ footer .copyright {
 @media (max-width: 640px) {
   .works-strip-list { grid-template-columns: 1fr 1fr; }
 }
+
+
+/* ---- 2026.10.28 追加：アーカイブの種別フィルター ---- */
+.archive-filter {
+  display: flex;
+  gap: 8px 22px;
+  margin-top: 8px;
+}
+.archive-filter button {
+  background: none;
+  border: none;
+  font-family: inherit;
+  font-size: 13px;
+  letter-spacing: 0.12em;
+  color: var(--ink-soft);
+  cursor: pointer;
+  padding: 4px 2px;
+  border-bottom: 1px solid transparent;
+  transition: color 0.4s, border-color 0.4s;
+}
+.archive-filter button:hover { color: var(--moss); }
+.archive-filter button[aria-pressed="true"] {
+  color: var(--ink);
+  border-bottom-color: var(--moss);
+}
